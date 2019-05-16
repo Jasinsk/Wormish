@@ -153,7 +153,7 @@ public class Platform : MonoBehaviour
 
     public void SpawnApple()
     {
-        GameObject m_apple = Instantiate(Apple, new Vector3(transform.position.x, transform.position.y + 3, transform.position.z), Quaternion.identity);
+        m_apple = Instantiate(Apple, new Vector3(transform.position.x, transform.position.y + 3, transform.position.z), Quaternion.identity);
         m_apple.transform.parent = transform;
         m_hasApple = true;
     }
@@ -185,4 +185,5 @@ public class Platform : MonoBehaviour
     private bool m_dropedWorm = false;
     private bool m_hasApple = false;
     private bool m_hasGrass = false;
+    private GameObject m_apple;
 }
