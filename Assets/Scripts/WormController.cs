@@ -43,12 +43,23 @@ public class WormController : MonoBehaviour
             {
                 transform.localScale = new Vector3(0.7f, 0.7f, 3);
             }
+            m_foodStatus -= 1;
         }
     }
-
+     
+    public void FeedMe()
+    {
+        m_foodStatus = 1000;
+    }
     public void Die()
     {
         m_material.color = Color.red;
+        m_running = false;
+    }
+
+    public void Starve()
+    {
+        m_material.color = Color.white;
         m_running = false;
     }
 
@@ -196,6 +207,10 @@ public class WormController : MonoBehaviour
     {
         return m_charging;
     }
+    public int GetFoodStatus()
+    {
+        return m_foodStatus;
+    }
 
     private bool m_running = true;
     private bool m_enlarging = true;
@@ -203,4 +218,5 @@ public class WormController : MonoBehaviour
     private Material m_material;
     private Rigidbody m_rigidbody;
     private bool m_charging = false;
+    private int m_foodStatus = 1000;
 }

@@ -6,7 +6,7 @@ public class Consumable : MonoBehaviour
 {
     void Start()
     {
-        
+        m_wormController = GameObject.FindGameObjectWithTag("Player").GetComponent<WormController>();
     }
 
     void Update()
@@ -18,9 +18,8 @@ public class Consumable : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            m_eaten = true;
+            GetEaten();
             GetComponent<MeshRenderer>().enabled = false;
-
             DestroyChildren();
         }
     }
@@ -33,5 +32,10 @@ public class Consumable : MonoBehaviour
         }
     }
 
-    private bool m_eaten = false;
+    private void GetEaten()
+    {
+        m_wormController.FeedMe();
+    }
+
+    private WormController m_wormController;
 }

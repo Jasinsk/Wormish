@@ -49,6 +49,10 @@ public class GameController : MonoBehaviour
                 {
                     DropWorm();
                 }
+                if (m_wormController.GetFoodStatus() < 0)
+                {
+                    StarveWorm();
+                }
             }
         }
     }
@@ -58,16 +62,21 @@ public class GameController : MonoBehaviour
         m_wormController.Die();
         m_gameRunning = false;
     }
-
-    private void DestroyRock(GameObject Rock)
-    {
-        Rock.GetComponent<Platform>().DestroyRock();
-    }
-
     private void DropWorm()
     {
         m_wormController.Drop();
         m_gameRunning = false;
+    }
+
+    private void StarveWorm()
+    {
+        m_wormController.Starve();
+        m_gameRunning = false;
+    }
+
+    private void DestroyRock(GameObject Rock)
+    {
+        Rock.GetComponent<Platform>().DestroyRock();
     }
 
     public void GoForward(GameObject platform)

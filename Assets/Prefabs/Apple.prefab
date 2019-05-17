@@ -195,6 +195,7 @@ GameObject:
   - component: {fileID: 3499109921255081529}
   - component: {fileID: 3779824927966845419}
   - component: {fileID: 4134372790563007725}
+  - component: {fileID: 5596518765585786269}
   m_Layer: 0
   m_Name: Apple
   m_TagString: Untagged
@@ -288,3 +289,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c52ee7ee03e042b4680a4b333a8bcf78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5596518765585786269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5786460298163007362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4464f376f298b94ead67c0069c8edd4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationDuration: 0.1
+  maxHeight: 0.8
+  minHeight: 0.6
