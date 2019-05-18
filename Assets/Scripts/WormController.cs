@@ -6,10 +6,12 @@ public class WormController : MonoBehaviour
 {
     public float wormScaleMax = 5;
     public float wormScaleMin = 2;
+    public Color starterColor;
 
     void Start()
     {
         m_material = GetComponent<Renderer>().material;
+        m_material.color = starterColor;
         m_rigidbody = GetComponent<Rigidbody>();
     }
 
@@ -43,6 +45,7 @@ public class WormController : MonoBehaviour
             {
                 transform.localScale = new Vector3(0.7f, 0.7f, 3);
             }
+            m_material.color = Color.Lerp(starterColor, Color.white, 1 - m_foodStatus / 1000f);
             m_foodStatus -= 1;
         }
     }
