@@ -103,7 +103,7 @@ public class Platform : MonoBehaviour
 
             StartCoroutine("DropHoleCoroutine");
         }
-        else if (rand > 0.05 && rand < 0.07)
+        else if (rand > 0.05 && rand < 0.07 && GameController.daytime)
         {
 
             m_isHole = false;

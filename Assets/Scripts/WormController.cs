@@ -13,6 +13,7 @@ public class WormController : MonoBehaviour
         m_material = GetComponent<Renderer>().material;
         m_material.color = starterColor;
         m_rigidbody = GetComponent<Rigidbody>();
+        m_headlamp = GetComponentInChildren<Light>();
     }
 
     void Update()
@@ -46,7 +47,16 @@ public class WormController : MonoBehaviour
                 transform.localScale = new Vector3(0.7f, 0.7f, 3);
             }
             m_material.color = Color.Lerp(starterColor, Color.white, 1 - m_foodStatus / 1000f);
-            m_foodStatus -= 1;
+            if (GameController.daytime)
+            {
+                m_foodStatus -= 1;
+                m_headlamp.enabled = false;
+            }
+            else
+            {
+                m_headlamp.enabled = true;
+            }
+            
         }
     }
      
@@ -220,6 +230,7 @@ public class WormController : MonoBehaviour
     private float m_rotationDuration = 0.2f;
     private Material m_material;
     private Rigidbody m_rigidbody;
+    private Light m_headlamp;
     private bool m_charging = false;
     private int m_foodStatus = 1000;
 }

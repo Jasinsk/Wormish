@@ -18,7 +18,7 @@ public class LightController : MonoBehaviour
         if (transform.rotation.eulerAngles.y > 90 && transform.rotation.eulerAngles.y < 270)
         {
             m_light.enabled = false;
-            m_lightOn = false;
+            m_sunUp = false;
         }
         else if (transform.rotation.eulerAngles.y > 360)
         {
@@ -27,17 +27,17 @@ public class LightController : MonoBehaviour
         else
         {
             m_light.enabled = true;
-            m_lightOn = true;
+            m_sunUp = true;
         }
     }
 
-    public bool GetLightOn()
+    public bool GetSunUp()
     {
-        return m_lightOn;
+        return m_sunUp;
     }
 
     private Vector3 m_rotator;
     private Light m_light;
     private Vector3 m_backrotator = new Vector3(0, 360, 0);
-    private bool m_lightOn;
+    private bool m_sunUp;
 }

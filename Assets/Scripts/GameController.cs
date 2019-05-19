@@ -5,10 +5,13 @@ using UnityEngine;
 public class GameController : MonoBehaviour
 {
     public GameObject Worm;
+    public GameObject Sun;
     public float terrainSpeed = 0.5f;
     public int terrainLength;
     public int terrainWidth;
     public Material[] materials;
+
+    public static bool daytime;
     void Start()
     {
         if (platforms == null)
@@ -16,6 +19,9 @@ public class GameController : MonoBehaviour
             platforms = GameObject.FindGameObjectsWithTag("Platform");
         }
         m_wormController = Worm.GetComponent<WormController>();
+        m_lightController = Sun.GetComponent<LightController>();
+
+        daytime = m_lightController.GetSunUp();
     }
 
     void Update()
@@ -53,6 +59,7 @@ public class GameController : MonoBehaviour
                 {
                     StarveWorm();
                 }
+                daytime = m_lightController.GetSunUp();
             }
         }
     }
@@ -157,5 +164,6 @@ public class GameController : MonoBehaviour
     private GameObject[] platforms;
     private float m_turnDuration = 0.1f;
     private WormController m_wormController;
+    private LightController m_lightController;
     private bool m_gameRunning = true;
 }
