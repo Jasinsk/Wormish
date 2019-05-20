@@ -47,6 +47,7 @@ public class WormController : MonoBehaviour
                 transform.localScale = new Vector3(0.7f, 0.7f, 3);
             }
             m_material.color = Color.Lerp(starterColor, Color.white, 1 - m_foodStatus / 1000f);
+
             if (GameController.daytime)
             {
                 m_foodStatus -= 1;
@@ -55,6 +56,7 @@ public class WormController : MonoBehaviour
             else
             {
                 m_headlamp.enabled = true;
+                m_headlamp.intensity -= 0.003f;
             }
             
         }
@@ -63,6 +65,11 @@ public class WormController : MonoBehaviour
     public void FeedMe()
     {
         m_foodStatus = 1000;
+    }
+
+    public void LightMeUp()
+    {
+        m_headlamp.intensity = 1;
     }
     public void Die()
     {

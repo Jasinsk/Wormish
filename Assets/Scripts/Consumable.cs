@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Consumable : MonoBehaviour
 {
+    public bool apple = false;
+    public bool flower = false;
     void Start()
     {
         m_wormController = GameObject.FindGameObjectWithTag("Player").GetComponent<WormController>();
@@ -34,7 +36,15 @@ public class Consumable : MonoBehaviour
 
     private void GetEaten()
     {
-        m_wormController.FeedMe();
+        if (apple)
+        {
+            m_wormController.FeedMe();
+        }
+        if (flower)
+        {
+            m_wormController.LightMeUp();
+        }
+        
     }
 
     private WormController m_wormController;

@@ -9,6 +9,7 @@ public class Platform : MonoBehaviour
     public Color DestroyedRock;
     public GameObject Apple;
     public GameObject Grass;
+    public GameObject LightFlower;
     void Start()
     {
         m_collider = GetComponent<Collider>();
@@ -114,6 +115,17 @@ public class Platform : MonoBehaviour
             transform.localScale = new Vector3(5, 5, 5);
             SpawnApple();
         }
+        else if (rand > 0.05 && rand < 0.07)
+        {
+
+            m_isHole = false;
+            GetComponent<MeshRenderer>().enabled = true;
+            m_isRock = false;
+            m_collider.isTrigger = false;
+            m_material.color = GrassColors[Random.Range(0, 3)];
+            transform.localScale = new Vector3(5, 5, 5);
+            SpawnLightFlower();
+        }
         else if (rand > 0.1 && rand < 0.2)
         {
             m_isHole = false;
@@ -158,6 +170,13 @@ public class Platform : MonoBehaviour
         m_hasApple = true;
     }
 
+    public void SpawnLightFlower()
+    {
+        m_flower = Instantiate(LightFlower, new Vector3(transform.position.x, transform.position.y + 3, transform.position.z), Quaternion.identity);
+        m_flower.transform.parent = transform;
+        m_hasApple = true;
+    }
+
     public void SpawnGrass()
     {
         GameObject m_grass = Instantiate(Grass, new Vector3(transform.position.x - 0.94f, transform.position.y - 56.29f + 2.5f, transform.position.z + 60.29f), Quaternion.identity);
@@ -186,4 +205,5 @@ public class Platform : MonoBehaviour
     private bool m_hasApple = false;
     private bool m_hasGrass = false;
     private GameObject m_apple;
+    private GameObject m_flower;
 }
