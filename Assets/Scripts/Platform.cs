@@ -174,6 +174,7 @@ public class Platform : MonoBehaviour
     {
         m_flower = Instantiate(LightFlower, new Vector3(transform.position.x, transform.position.y + 3, transform.position.z), Quaternion.identity);
         m_flower.transform.parent = transform;
+        m_flower.transform.localEulerAngles += new Vector3(45, 0, 45);
         m_hasApple = true;
     }
 
