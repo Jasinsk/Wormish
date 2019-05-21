@@ -29,6 +29,14 @@ public class LightController : MonoBehaviour
             m_light.enabled = true;
             m_sunUp = true;
         }
+        if (transform.rotation.eulerAngles.y > 70 && transform.rotation.eulerAngles.y < 290)
+        {
+            m_premptiveSunUp = false;
+        }
+        else
+        {
+            m_premptiveSunUp = true;
+        }
     }
 
     public bool GetSunUp()
@@ -36,8 +44,14 @@ public class LightController : MonoBehaviour
         return m_sunUp;
     }
 
+    public bool GetPremptiveSunUp()
+    {
+        return m_premptiveSunUp;
+    }
+
     private Vector3 m_rotator;
     private Light m_light;
     private Vector3 m_backrotator = new Vector3(0, 360, 0);
     private bool m_sunUp;
+    private bool m_premptiveSunUp;
 }

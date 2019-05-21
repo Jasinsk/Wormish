@@ -12,6 +12,7 @@ public class GameController : MonoBehaviour
     public Material[] materials;
 
     public static bool daytime;
+    public static bool premptiveDayTime;
     void Start()
     {
         if (platforms == null)
@@ -22,6 +23,7 @@ public class GameController : MonoBehaviour
         m_lightController = Sun.GetComponent<LightController>();
 
         daytime = m_lightController.GetSunUp();
+        premptiveDayTime = m_lightController.GetPremptiveSunUp();
     }
 
     void Update()
@@ -60,6 +62,7 @@ public class GameController : MonoBehaviour
                     StarveWorm();
                 }
                 daytime = m_lightController.GetSunUp();
+                premptiveDayTime = m_lightController.GetPremptiveSunUp();
             }
         }
     }

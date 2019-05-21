@@ -48,7 +48,7 @@ public class WormController : MonoBehaviour
             }
             m_material.color = Color.Lerp(starterColor, Color.white, 1 - m_foodStatus / 1000f);
 
-            if (GameController.daytime)
+            if (GameController.premptiveDayTime)
             {
                 m_foodStatus -= 1;
                 m_headlamp.enabled = false;
@@ -56,7 +56,7 @@ public class WormController : MonoBehaviour
             else
             {
                 m_headlamp.enabled = true;
-                m_headlamp.intensity -= 0.003f;
+                m_headlamp.intensity -= 0.001f;
             }
             
         }
