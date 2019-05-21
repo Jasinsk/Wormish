@@ -52,15 +52,46 @@ public class WormController : MonoBehaviour
             if (GameController.premptiveDayTime)
             {
                 m_foodStatus -= 1;
-                m_nightlight.enabled = false;
+                if (m_nightlight.enabled)
+                {
+                    StartCoroutine("LightFadeOutCoroutine");
+                }
             }
             else
             {
-                m_nightlight.enabled = true;
                 m_nightlight.intensity -= 0.001f;
+                if (!m_nightlight.enabled)
+                {
+                    StartCoroutine("LightFadeInCoroutine");
+                }
             }
             
         }
+    }
+
+    private IEnumerator LightFadeInCoroutine()
+    {
+        float temp_intensity = m_nightlight.intensity;
+        m_nightlight.intensity = 0;
+        m_nightlight.enabled = true;
+        while (m_nightlight.intensity < temp_intensity)
+        {
+            m_nightlight.intensity += 0.05f;
+            yield return new WaitForSeconds(0.1f);
+        }
+        m_nightlight.intensity = temp_intensity;
+    }
+
+    private IEnumerator LightFadeOutCoroutine()
+    {
+        float temp_intensity = m_nightlight.intensity;
+        while (m_nightlight.intensity > 0)
+        {
+            m_nightlight.intensity -= 0.05f;
+            yield return new WaitForSeconds(0.1f);
+        }
+        m_nightlight.enabled = false;
+        m_nightlight.intensity = temp_intensity;
     }
      
     public void FeedMe()
