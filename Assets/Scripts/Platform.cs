@@ -84,12 +84,14 @@ public class Platform : MonoBehaviour
     public void CheckIfRockOrHole()
     {
         DestroyChildren();
+        //GetComponent<MeshRenderer>().shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
         float rand = Random.value;
         if(rand < 0.05)
         {
             m_isHole = false;
             m_isRock = true;
             m_collider.isTrigger = true;
+            //GetComponent<MeshRenderer>().shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On;
 
             StartCoroutine("RaiseRockCoroutine");
         }
