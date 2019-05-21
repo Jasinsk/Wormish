@@ -8855,6 +8855,7 @@ GameObject:
   m_Component:
   - component: {fileID: 660866120}
   - component: {fileID: 660866121}
+  - component: {fileID: 660866122}
   m_Layer: 0
   m_Name: Player Controller
   m_TagString: Untagged
@@ -8886,6 +8887,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2fb30fd2fd3665d4192551ea5dd9f2a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Worm: {fileID: 837799569}
+  GameController: {fileID: 944101977}
+--- !u!114 &660866122
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 660866119}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee91a47008618a84ba398891dbedae38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Worm: {fileID: 837799569}
