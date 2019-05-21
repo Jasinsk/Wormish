@@ -7,13 +7,14 @@ public class WormController : MonoBehaviour
     public float wormScaleMax = 5;
     public float wormScaleMin = 2;
     public Color starterColor;
+    public GameObject nightlight;
 
     void Start()
     {
         m_material = GetComponent<Renderer>().material;
         m_material.color = starterColor;
         m_rigidbody = GetComponent<Rigidbody>();
-        m_headlamp = GetComponentInChildren<Light>();
+        m_nightlight = nightlight.GetComponent<Light>();
     }
 
     void Update()
@@ -51,12 +52,12 @@ public class WormController : MonoBehaviour
             if (GameController.premptiveDayTime)
             {
                 m_foodStatus -= 1;
-                m_headlamp.enabled = false;
+                m_nightlight.enabled = false;
             }
             else
             {
-                m_headlamp.enabled = true;
-                m_headlamp.intensity -= 0.001f;
+                m_nightlight.enabled = true;
+                m_nightlight.intensity -= 0.001f;
             }
             
         }
@@ -69,7 +70,7 @@ public class WormController : MonoBehaviour
 
     public void LightMeUp()
     {
-        m_headlamp.intensity = 1;
+        m_nightlight.intensity = 0.7f;
     }
     public void Die()
     {
@@ -237,7 +238,7 @@ public class WormController : MonoBehaviour
     private float m_rotationDuration = 0.2f;
     private Material m_material;
     private Rigidbody m_rigidbody;
-    private Light m_headlamp;
+    private Light m_nightlight;
     private bool m_charging = false;
     private int m_foodStatus = 1000;
 }
