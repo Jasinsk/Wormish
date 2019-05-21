@@ -15,6 +15,8 @@ public class GameController : MonoBehaviour
     public static bool premptiveDayTime;
     void Start()
     {
+        Application.targetFrameRate = 30;
+
         if (platforms == null)
         {
             platforms = GameObject.FindGameObjectsWithTag("Platform");
