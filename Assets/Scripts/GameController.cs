@@ -21,6 +21,7 @@ public class GameController : MonoBehaviour
         {
             platforms = GameObject.FindGameObjectsWithTag("Platform");
         }
+        ScatterTerrain();
         m_wormController = Worm.GetComponent<WormController>();
         m_lightController = Sun.GetComponent<LightController>();
 
@@ -163,6 +164,15 @@ public class GameController : MonoBehaviour
         else
         {
             platform.transform.Translate(-platform.transform.position.x + terrainWidth/2.0f, 0, 0);
+        }
+    }
+
+    private void ScatterTerrain()
+    {
+        foreach (GameObject platform in platforms)
+        {
+            platform.transform.localPosition = new Vector3(platform.transform.localPosition.x, -2.5f + Random.Range(-0.3f, 0.3f), platform.transform.localPosition.z);
+            platform.GetComponent<Platform>().RandomGrassColor();
         }
     }
 

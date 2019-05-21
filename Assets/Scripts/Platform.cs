@@ -146,7 +146,10 @@ public class Platform : MonoBehaviour
             transform.localScale = new Vector3(5, 5, 5);
         }
     }
-
+    public void RandomGrassColor()
+    {
+        GetComponent<Renderer>().material.color = GrassColors[Random.Range(0, 3)];
+    }
     public void DestroyRock()
     {
         m_collider.isTrigger = false;
