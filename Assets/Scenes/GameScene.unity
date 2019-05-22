@@ -8009,8 +8009,7 @@ Transform:
   m_LocalRotation: {x: 0.34870905, y: -0, z: -0, w: 0.93723106}
   m_LocalPosition: {x: 0, y: 14.06, z: -10.93}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 2089706987}
+  m_Children: [{fileID: 2089706987}]
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 40.817, y: 0, z: 0}
@@ -13137,6 +13136,8 @@ MonoBehaviour:
   Worm: {fileID: 837799569}
   Sun: {fileID: 170076733}
   terrainSpeed: 0.2
+  speedStep: 0.00000001
+  maxTerrainSpeed: 0.3
   terrainLength: 90
   terrainWidth: 65
   materials: []
