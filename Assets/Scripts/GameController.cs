@@ -17,7 +17,7 @@ public class GameController : MonoBehaviour
     public static bool premptiveDayTime;
     void Start()
     {
-        Application.targetFrameRate = 60;
+        Application.targetFrameRate = 30;
 
         if (platforms == null)
         {
