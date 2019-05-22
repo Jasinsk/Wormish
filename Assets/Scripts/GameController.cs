@@ -7,6 +7,8 @@ public class GameController : MonoBehaviour
     public GameObject Worm;
     public GameObject Sun;
     public float terrainSpeed = 0.5f;
+    public float speedStep = 0.00001f;
+    public float maxTerrainSpeed = 1f;
     public int terrainLength;
     public int terrainWidth;
     public Material[] materials;
@@ -66,6 +68,11 @@ public class GameController : MonoBehaviour
                 }
                 daytime = m_lightController.GetSunUp();
                 premptiveDayTime = m_lightController.GetPremptiveSunUp();
+
+                if (terrainSpeed < maxTerrainSpeed)
+                {
+                    terrainSpeed += speedStep;
+                }
             }
         }
     }

@@ -13123,6 +13123,8 @@ MonoBehaviour:
   Worm: {fileID: 837799569}
   Sun: {fileID: 170076733}
   terrainSpeed: 0.2
+  speedStep: 0.00000001
+  maxTerrainSpeed: 0.3
   terrainLength: 90
   terrainWidth: 65
   materials: []
