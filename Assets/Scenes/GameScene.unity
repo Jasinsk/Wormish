@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.4482447, g: 0.49827158, b: 0.5755807, a: 1}
+  m_IndirectSpecularColor: {r: 0.44824505, g: 0.49827188, b: 0.57558143, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2997,7 +2997,7 @@ Light:
   serializedVersion: 8
   m_Type: 1
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 1
+  m_Intensity: 1.2
   m_Range: 10
   m_SpotAngle: 30
   m_CookieSize: 10
@@ -8090,8 +8090,7 @@ Transform:
   m_LocalRotation: {x: 0.34870905, y: -0, z: -0, w: 0.93723106}
   m_LocalPosition: {x: 0, y: 14.06, z: -10.93}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 2089706987}
+  m_Children: [{fileID: 2089706987}]
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 40.817, y: 0, z: 0}

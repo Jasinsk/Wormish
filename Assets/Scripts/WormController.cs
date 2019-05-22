@@ -101,7 +101,7 @@ public class WormController : MonoBehaviour
 
     public void LightMeUp()
     {
-        m_nightlight.intensity = 0.7f;
+        m_nightlight.intensity = 0.9f;
     }
     public void Die()
     {
