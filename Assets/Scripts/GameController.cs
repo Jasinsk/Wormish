@@ -12,12 +12,14 @@ public class GameController : MonoBehaviour
     public int terrainLength;
     public int terrainWidth;
     public Material[] materials;
+    public GameObject diedText;
+    public GameObject starvedText;
 
     public static bool daytime;
     public static bool premptiveDayTime;
     void Start()
     {
-        Application.targetFrameRate = 30;
+        Application.targetFrameRate = 60;
 
         if (platforms == null)
         {
@@ -80,17 +82,20 @@ public class GameController : MonoBehaviour
     private void KillWorm()
     {
         m_wormController.Die();
+        diedText.active = true;
         m_gameRunning = false;
     }
     private void DropWorm()
     {
         m_wormController.Drop();
+        diedText.active = true;
         m_gameRunning = false;
     }
 
     private void StarveWorm()
     {
         m_wormController.Starve();
+        starvedText.active = true;
         m_gameRunning = false;
     }
 
