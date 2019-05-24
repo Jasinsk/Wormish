@@ -82,20 +82,20 @@ public class GameController : MonoBehaviour
     private void KillWorm()
     {
         m_wormController.Die();
-        diedText.active = true;
+        diedText.SetActive(true);
         m_gameRunning = false;
     }
     private void DropWorm()
     {
         m_wormController.Drop();
-        diedText.active = true;
+        diedText.SetActive(true);
         m_gameRunning = false;
     }
 
     private void StarveWorm()
     {
         m_wormController.Starve();
-        starvedText.active = true;
+        starvedText.SetActive(true);
         m_gameRunning = false;
     }
 

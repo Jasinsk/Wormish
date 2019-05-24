@@ -14,6 +14,7 @@ public class Platform : MonoBehaviour
     {
         m_collider = GetComponent<Collider>();
         m_material = GetComponent<Renderer>().material;
+        settings = GameObject.FindGameObjectWithTag("LevelSettings").GetComponent<LevelSettings>();
     }
 
 
@@ -95,7 +96,7 @@ public class Platform : MonoBehaviour
 
             StartCoroutine("RaiseRockCoroutine");
         }
-        else if (rand > 0.9)
+        else if (rand > 0.9 && settings.GetHolesSet())
         {
             m_material.color = GrassColors[Random.Range(0, 3)];
             transform.localScale = new Vector3(5, 5, 5);
@@ -106,7 +107,7 @@ public class Platform : MonoBehaviour
 
             StartCoroutine("DropHoleCoroutine");
         }
-        else if (rand > 0.05 && rand < 0.07 && GameController.premptiveDayTime)
+        else if (rand > 0.05 && rand < 0.07 && GameController.premptiveDayTime && settings.GetStarvationSet())
         {
 
             m_isHole = false;
@@ -117,7 +118,7 @@ public class Platform : MonoBehaviour
             transform.localScale = new Vector3(5, 5, 5);
             SpawnApple();
         }
-        else if (rand > 0.05 && rand < 0.07)
+        else if (rand > 0.05 && rand < 0.07 && !GameController.premptiveDayTime)
         {
 
             m_isHole = false;
@@ -212,4 +213,5 @@ public class Platform : MonoBehaviour
     private bool m_hasGrass = false;
     private GameObject m_apple;
     private GameObject m_flower;
+    private LevelSettings settings;
 }

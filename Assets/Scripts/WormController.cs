@@ -15,6 +15,7 @@ public class WormController : MonoBehaviour
         m_material.color = starterColor;
         m_rigidbody = GetComponent<Rigidbody>();
         m_nightlight = nightlight.GetComponent<Light>();
+        settings = GameObject.FindGameObjectWithTag("LevelSettings").GetComponent<LevelSettings>();
     }
 
     void Update()
@@ -49,8 +50,8 @@ public class WormController : MonoBehaviour
             }
             m_material.color = Color.Lerp(starterColor, Color.white, 1 - m_foodStatus / 1000f);
 
-            if (GameController.premptiveDayTime)
-            {
+            if (GameController.premptiveDayTime && settings.GetStarvationSet())
+                {
                 m_foodStatus -= 1;
                 if (m_nightlight.enabled)
                 {
@@ -62,7 +63,7 @@ public class WormController : MonoBehaviour
                 m_nightlight.intensity -= 0.001f;
                 if (!m_nightlight.enabled)
                 {
-                    StartCoroutine("LightFadeInCoroutine");
+                   StartCoroutine("LightFadeInCoroutine");
                 }
             }
             
@@ -272,4 +273,5 @@ public class WormController : MonoBehaviour
     private Light m_nightlight;
     private bool m_charging = false;
     private int m_foodStatus = 1000;
+    private LevelSettings settings;
 }
