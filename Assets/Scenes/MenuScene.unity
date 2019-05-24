@@ -951,7 +951,7 @@ GameObject:
   - component: {fileID: 1457893765}
   - component: {fileID: 1457893764}
   m_Layer: 5
-  m_Name: PlayButton (4)
+  m_Name: PlayLevelEndless
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

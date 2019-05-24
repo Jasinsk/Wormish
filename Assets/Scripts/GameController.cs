@@ -188,6 +188,15 @@ public class GameController : MonoBehaviour
         }
     }
 
+    public void EndLevel()
+    {
+        Debug.Log("Level finished");
+    }
+    public bool GetGameRunning()
+    {
+        return m_gameRunning;
+    }
+
     private GameObject[] platforms;
     private float m_turnDuration = 0.1f;
     private WormController m_wormController;

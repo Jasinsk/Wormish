@@ -82,6 +82,10 @@ public class LevelSettings : MonoBehaviour
     {
         return m_Holes;
     }
+    public float GetLevelDuration()
+    {
+        return m_levelDuration;
+    }
     private bool m_dayCycle, m_starvation, m_Holes = false;
     private bool m_daySet = true;
     private int m_levelDuration;
