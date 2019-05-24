@@ -6,14 +6,59 @@ public class LevelSettings : MonoBehaviour
 {
     void Start()
     {
-        SetEndlessSet();   
+        SetEndless();   
     }
+    void Awake()
+    {
+        if (!wasCreated)
+        {
+            DontDestroyOnLoad(gameObject);
+            wasCreated = true;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+
+    }
+
     void Update()
     {
         
     }
-
-    public void SetEndlessSet()
+    public void SetLevelOne()
+    {
+        m_dayCycle = false;
+        m_starvation = false;
+        m_Holes = true;
+        m_daySet = true;
+        m_levelDuration = 60;
+    }
+    public void SetLevelTwo()
+    {
+        m_dayCycle = false;
+        m_starvation = true;
+        m_Holes = true;
+        m_daySet = true;
+        m_levelDuration = 120;
+    }
+    public void SetLevelThree()
+    {
+        m_dayCycle = false;
+        m_starvation = true;
+        m_Holes = true;
+        m_daySet = false;
+        m_levelDuration = 120;
+    }
+    public void SetLevelFour()
+    {
+        m_dayCycle = true;
+        m_starvation = true;
+        m_Holes = true;
+        m_daySet = true;
+        m_levelDuration = 300;
+    }
+    public void SetEndless()
     {
         m_dayCycle = true;
         m_starvation = true;
@@ -39,5 +84,7 @@ public class LevelSettings : MonoBehaviour
     }
     private bool m_dayCycle, m_starvation, m_Holes = false;
     private bool m_daySet = true;
+    private int m_levelDuration;
+    private static bool wasCreated = false;
     
 }

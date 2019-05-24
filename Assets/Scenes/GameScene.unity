@@ -21963,49 +21963,6 @@ MonoBehaviour:
   Grass: {fileID: 4935959493786139119, guid: 7f2553aa268ea6d4caeb8ae069ff8e9d, type: 3}
   LightFlower: {fileID: 3265242101480761031, guid: 455f331711d872b47bb06339662454d4,
     type: 3}
---- !u!1 &1473642216
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1473642218}
-  - component: {fileID: 1473642217}
-  m_Layer: 0
-  m_Name: Level Settings
-  m_TagString: LevelSettings
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1473642217
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1473642216}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 75b91d8c88afb744784ca762cdd93f5c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &1473642218
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1473642216}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.3901122, y: -18.06822, z: 16.593784}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1495132180
 GameObject:
   m_ObjectHideFlags: 0
