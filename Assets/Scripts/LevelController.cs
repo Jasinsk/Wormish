@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MenuController : MonoBehaviour
+public class LevelController : MonoBehaviour
 {
     public string gameScene;
     public string menuScene;
@@ -39,6 +39,7 @@ public class MenuController : MonoBehaviour
     }
     public void NextLevel()
     {
+        Debug.Log("Next Level Activated" + settings.currentLevel);
         StartLevel(settings.currentLevel + 1);
     }
 

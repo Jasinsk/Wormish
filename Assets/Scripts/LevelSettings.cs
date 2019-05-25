@@ -33,7 +33,7 @@ public class LevelSettings : MonoBehaviour
         m_starvation = false;
         m_Holes = true;
         m_daySet = true;
-        m_levelDuration = 60;
+        m_levelDuration = 10;
     }
     public void SetLevelTwo()
     {
@@ -41,7 +41,7 @@ public class LevelSettings : MonoBehaviour
         m_starvation = true;
         m_Holes = true;
         m_daySet = true;
-        m_levelDuration = 120;
+        m_levelDuration = 10;
     }
     public void SetLevelThree()
     {
@@ -49,7 +49,7 @@ public class LevelSettings : MonoBehaviour
         m_starvation = true;
         m_Holes = true;
         m_daySet = false;
-        m_levelDuration = 120;
+        m_levelDuration = 10;
     }
     public void SetLevelFour()
     {
@@ -57,7 +57,7 @@ public class LevelSettings : MonoBehaviour
         m_starvation = true;
         m_Holes = true;
         m_daySet = true;
-        m_levelDuration = 300;
+        m_levelDuration = 10;
     }
     public void SetEndless()
     {

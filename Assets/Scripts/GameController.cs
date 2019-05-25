@@ -14,6 +14,7 @@ public class GameController : MonoBehaviour
     public Material[] materials;
     public GameObject diedText;
     public GameObject starvedText;
+    public GameObject levelFinishedCanvas;
 
     public static bool daytime;
     public static bool premptiveDayTime;
@@ -28,6 +29,7 @@ public class GameController : MonoBehaviour
         ScatterTerrain();
         m_wormController = Worm.GetComponent<WormController>();
         m_lightController = Sun.GetComponent<LightController>();
+        m_levelController = FindObjectOfType<LevelController>();
 
         daytime = m_lightController.GetSunUp();
         premptiveDayTime = m_lightController.GetPremptiveSunUp();
@@ -191,6 +193,8 @@ public class GameController : MonoBehaviour
     public void EndLevel()
     {
         Debug.Log("Level finished");
+        m_gameRunning = false;
+        levelFinishedCanvas.SetActive(true);
     }
     public bool GetGameRunning()
     {
@@ -201,5 +205,6 @@ public class GameController : MonoBehaviour
     private float m_turnDuration = 0.1f;
     private WormController m_wormController;
     private LightController m_lightController;
+    private LevelController m_levelController;
     private bool m_gameRunning = true;
 }
