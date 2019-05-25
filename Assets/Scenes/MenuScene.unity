@@ -395,12 +395,12 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2057829061}
-        m_MethodName: StartLevelOne
-        m_Mode: 5
+        m_MethodName: StartLevel
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: GameScene
           m_BoolArgument: 0
@@ -815,12 +815,12 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2057829061}
-        m_MethodName: StartLevelTwo
-        m_Mode: 5
+        m_MethodName: StartLevel
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: GameScene
           m_BoolArgument: 0
@@ -1018,12 +1018,12 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2057829061}
-        m_MethodName: StartLevelEndless
-        m_Mode: 5
+        m_MethodName: StartLevel
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 5
           m_FloatArgument: 0
           m_StringArgument: GameScene
           m_BoolArgument: 0
@@ -1096,6 +1096,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75b91d8c88afb744784ca762cdd93f5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentLevel: 1
 --- !u!4 &1473642218
 Transform:
   m_ObjectHideFlags: 0
@@ -1589,12 +1590,12 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2057829061}
-        m_MethodName: StartLevelThree
-        m_Mode: 5
+        m_MethodName: StartLevel
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 3
           m_FloatArgument: 0
           m_StringArgument: GameScene
           m_BoolArgument: 0
@@ -1734,6 +1735,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 402bc548f4fe77549b2e2e0649aee54d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameScene: GameScene
+  menuScene: MenuScene
 --- !u!1 &2082215730
 GameObject:
   m_ObjectHideFlags: 0
@@ -1814,12 +1817,12 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2057829061}
-        m_MethodName: StartLevelFour
-        m_Mode: 5
+        m_MethodName: StartLevel
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 4
           m_FloatArgument: 0
           m_StringArgument: GameScene
           m_BoolArgument: 0

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class LevelSettings : MonoBehaviour
 {
+    public int currentLevel = 1;
     void Start()
     {
         SetEndless();   
@@ -89,6 +90,5 @@ public class LevelSettings : MonoBehaviour
     private bool m_dayCycle, m_starvation, m_Holes = false;
     private bool m_daySet = true;
     private int m_levelDuration;
-    private static bool wasCreated = false;
-    
+    private static bool wasCreated = false;    
 }
