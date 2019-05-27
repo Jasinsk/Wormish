@@ -44,8 +44,12 @@ public class LevelController : MonoBehaviour
     // Switches onto the next level
     public void NextLevel()
     {
-        Debug.Log("Next Level Activated" + settings.currentLevel);
         StartLevel(settings.currentLevel + 1);
+    }
+    // Plays same level once more
+    public void ReplayLevel()
+    {
+        StartLevel(settings.currentLevel);
     }
     // Changes scene to the main menu
     public void ReturnToMenu()
