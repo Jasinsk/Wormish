@@ -17,6 +17,11 @@ public class WormController : MonoBehaviour
         m_rigidbody = GetComponent<Rigidbody>();
         m_nightlight = nightlight.GetComponent<Light>();
         settings = GameObject.FindGameObjectWithTag("LevelSettings").GetComponent<LevelSettings>();
+
+        if (!settings.GetDayCycleSet())
+        {
+            m_nightlight.enabled = false;
+        }
     }
 
     void Update()
@@ -62,7 +67,7 @@ public class WormController : MonoBehaviour
             else
             {
                 m_nightlight.intensity -= 0.001f;
-                if (!m_nightlight.enabled)
+                if (!m_nightlight.enabled && (settings.GetDayCycleSet() || !settings.GetDaySet()))
                 {
                    StartCoroutine("LightFadeInCoroutine");
                 }
