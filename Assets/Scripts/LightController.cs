@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// The class responsible for creation of the in-game day-night cycle 
 public class LightController : MonoBehaviour
 {
     public float rotationAngle = 1;

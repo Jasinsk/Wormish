@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// The class responsible for player inputs on PC
 public class PlayerController : MonoBehaviour
 {
 

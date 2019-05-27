@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// The class responsible for the floating apple animation
 public class Floating : MonoBehaviour
 {
     public float rotationDuration = 1;

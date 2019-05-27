@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// Class responsible for setting up every level and changing the settings between them
 public class LevelSettings : MonoBehaviour
 {
     public int currentLevel = 1;
@@ -9,6 +10,7 @@ public class LevelSettings : MonoBehaviour
     {
         SetEndless();   
     }
+    // Making sure only one instance of LevelSettings is present on the scene
     void Awake()
     {
         if (!wasCreated)
@@ -27,6 +29,7 @@ public class LevelSettings : MonoBehaviour
     {
         
     }
+    // Setting up all the particular level settings
     public void SetLevelOne()
     {
         m_dayCycle = false;

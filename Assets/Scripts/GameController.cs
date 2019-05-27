@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//The main class responsible for running the game and coordinating all of it's particular parts
+
 public class GameController : MonoBehaviour
 {
     public GameObject Worm;
@@ -39,6 +41,7 @@ public class GameController : MonoBehaviour
     {
         if (m_gameRunning)
         {
+            // Moving and creating all the platforms responsible for our game terrain
             foreach (GameObject platform in platforms)
             {
                 GoForward(platform);
@@ -80,37 +83,38 @@ public class GameController : MonoBehaviour
             }
         }
     }
-
+    // Stops the game and kills our worm after it hits a rock
     private void KillWorm()
     {
         m_wormController.Die();
         diedText.SetActive(true);
         m_gameRunning = false;
     }
+    // Stops the game and drops our worm after it hits a hole
     private void DropWorm()
     {
         m_wormController.Drop();
         diedText.SetActive(true);
         m_gameRunning = false;
     }
-
+    // Stops the game and kills our worm when it starves
     private void StarveWorm()
     {
         m_wormController.Starve();
         starvedText.SetActive(true);
         m_gameRunning = false;
     }
-
+    // Called when our worm charges through a rock
     private void DestroyRock(GameObject Rock)
     {
         Rock.GetComponent<Platform>().DestroyRock();
     }
-
+    // Used to move platforms backwards creating our terrain movement
     public void GoForward(GameObject platform)
     {
             platform.transform.Translate(0, 0, -terrainSpeed);
     }
-
+    // Called when our worm goes left
     public void GoLeft()
     {
         if (m_wormController.GetRunning())
@@ -122,7 +126,7 @@ public class GameController : MonoBehaviour
             }
         }
     }
-
+    // Coroutine responsible for the turning animation together with the movement of the platforms when moving left
     private IEnumerator GoLeftCoroutine(GameObject platform)
     {
         Vector3 startPosition = platform.transform.position;
@@ -136,6 +140,7 @@ public class GameController : MonoBehaviour
         }
         yield break;
     }
+    // Called when our worm goes right
     public void GoRight()
     {
         if (m_wormController.GetRunning())
@@ -147,7 +152,7 @@ public class GameController : MonoBehaviour
             }
         }
     }
-
+    // Coroutine responsible for the turning animation together with the movement of the platforms when moving right
     private IEnumerator GoRightCoroutine(GameObject platform)
     {
         Vector3 startPosition = platform.transform.position;
@@ -161,6 +166,7 @@ public class GameController : MonoBehaviour
         }
         yield break;
     }
+    // Used to recycle terrain blocks that have been passed to create new terrain
     private void RegenerateTerrain(GameObject platform)
     {
         platform.GetComponent<Platform>().CheckIfRockOrHole();
@@ -168,7 +174,7 @@ public class GameController : MonoBehaviour
         platform.transform.localPosition = new Vector3(platform.transform.localPosition.x, - 2.5f + Random.Range(-0.3f,0.3f), platform.transform.localPosition.z);
 
     }
-
+    // Responsible for terrain movement to the sides
     private void TeleportTerrain(GameObject platform, bool right)
     {
         if(right)
@@ -180,7 +186,7 @@ public class GameController : MonoBehaviour
             platform.transform.Translate(-platform.transform.position.x + terrainWidth/2.0f, 0, 0);
         }
     }
-
+    // Makes terrain bocks uneven and randomizes their color
     private void ScatterTerrain()
     {
         foreach (GameObject platform in platforms)
@@ -189,13 +195,15 @@ public class GameController : MonoBehaviour
             platform.GetComponent<Platform>().RandomGrassColor();
         }
     }
-
+    // Called after the level duration time has elapsed to signify it's end
     public void EndLevel()
     {
         Debug.Log("Level finished");
         m_gameRunning = false;
         levelFinishedCanvas.SetActive(true);
     }
+
+
     public bool GetGameRunning()
     {
         return m_gameRunning;

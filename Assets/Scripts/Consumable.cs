@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// The class responsible for the creation and use of all consumable items
 public class Consumable : MonoBehaviour
 {
     public bool apple = false;
@@ -15,7 +16,7 @@ public class Consumable : MonoBehaviour
     {
         
     }
-
+    // This function is called when the consumable item comes into contact with our worm 
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")
@@ -33,7 +34,7 @@ public class Consumable : MonoBehaviour
             GameObject.Destroy(child.gameObject);
         }
     }
-
+    // Causes all consumable item effects
     private void GetEaten()
     {
         if (apple)

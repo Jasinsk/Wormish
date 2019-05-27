@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// The class used to represent every single terrain block and it's paramaters
 public class Platform : MonoBehaviour
 {
     public Color[] GrassColors;
@@ -22,7 +23,7 @@ public class Platform : MonoBehaviour
     {
 
     }
-
+    // Controlling player interactions with rocks and holes
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player" && m_isRock)
@@ -35,7 +36,7 @@ public class Platform : MonoBehaviour
         }
 
     }
-
+    // Animates the rise of rock pillars in the distance
     private IEnumerator RaiseRockCoroutine()
     {
         m_material.color = RockColors[Random.Range(0, 3)];
@@ -47,7 +48,7 @@ public class Platform : MonoBehaviour
         transform.localScale = new Vector3(5, 17, 5);
         yield break;
     }
-
+    // Animates the fall of blocks to create holes
     private IEnumerator DropHoleCoroutine()
     {
         yield return new WaitForSeconds(3.5f);
@@ -81,7 +82,7 @@ public class Platform : MonoBehaviour
 
         yield break;
     }
-
+    // Random creation of blocks as rocks wholes or ordinary blocks
     public void CheckIfRockOrHole()
     {
         DestroyChildren();
@@ -89,6 +90,7 @@ public class Platform : MonoBehaviour
         float rand = Random.value;
         if(rand < 0.05)
         {
+            // Change platform into rock
             m_isHole = false;
             m_isRock = true;
             m_collider.isTrigger = true;
@@ -98,6 +100,7 @@ public class Platform : MonoBehaviour
         }
         else if (rand > 0.9 && settings.GetHolesSet())
         {
+            // Change platform into hole
             m_material.color = GrassColors[Random.Range(0, 3)];
             transform.localScale = new Vector3(5, 5, 5);
 
@@ -109,7 +112,7 @@ public class Platform : MonoBehaviour
         }
         else if (rand > 0.05 && rand < 0.07 && GameController.premptiveDayTime && settings.GetStarvationSet())
         {
-
+            // Spawn apple on platform
             m_isHole = false;
             GetComponent<MeshRenderer>().enabled = true;
             m_isRock = false;
@@ -120,7 +123,7 @@ public class Platform : MonoBehaviour
         }
         else if (rand > 0.05 && rand < 0.07 && !GameController.premptiveDayTime)
         {
-
+            // Spawn flower on block
             m_isHole = false;
             GetComponent<MeshRenderer>().enabled = true;
             m_isRock = false;
@@ -131,6 +134,7 @@ public class Platform : MonoBehaviour
         }
         else if (rand > 0.1 && rand < 0.2)
         {
+            // Spawn grass on block
             m_isHole = false;
             GetComponent<MeshRenderer>().enabled = true;
             m_isRock = false;
@@ -141,6 +145,7 @@ public class Platform : MonoBehaviour
         }
         else
         {
+            // Spawn regular terrain block
             m_isHole = false;
             GetComponent<MeshRenderer>().enabled = true;
             m_isRock = false;
@@ -149,6 +154,7 @@ public class Platform : MonoBehaviour
             transform.localScale = new Vector3(5, 5, 5);
         }
     }
+    // randomly assign grass color
     public void RandomGrassColor()
     {
         GetComponent<Renderer>().material.color = GrassColors[Random.Range(0, 3)];

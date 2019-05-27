@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// The class responsible for controlling all acion pertaining to our worm
 public class WormController : MonoBehaviour
 {
     public float wormScaleMax = 5;
@@ -69,7 +70,7 @@ public class WormController : MonoBehaviour
             
         }
     }
-
+    // Fades in our headlight
     private IEnumerator LightFadeInCoroutine()
     {
         float temp_intensity = m_nightlight.intensity;
@@ -82,7 +83,7 @@ public class WormController : MonoBehaviour
         }
         m_nightlight.intensity = temp_intensity;
     }
-
+    // Fades out our headlight
     private IEnumerator LightFadeOutCoroutine()
     {
         float temp_intensity = m_nightlight.intensity;
@@ -94,16 +95,17 @@ public class WormController : MonoBehaviour
         m_nightlight.enabled = false;
         m_nightlight.intensity = temp_intensity;
     }
-     
+     // Replenishes food meter
     public void FeedMe()
     {
         m_foodStatus = 1000;
     }
-
+    // Replenishes the headlight
     public void LightMeUp()
     {
         m_nightlight.intensity = 0.9f;
     }
+
     public void Die()
     {
         m_material.color = Color.red;
@@ -121,8 +123,8 @@ public class WormController : MonoBehaviour
         m_running = false;
         StopAllCoroutines();
         StartCoroutine("PanicAnimation");
-        
     }
+    // Plays the animation seen before our worm falls into a hole
     private IEnumerator PanicAnimation()
     {
         int t = 40;
@@ -167,7 +169,7 @@ public class WormController : MonoBehaviour
             StartCoroutine("ChargingCoroutine");
         }
     }
-
+    // Plays charing animation
     private IEnumerator ChargingCoroutine()
     {
         float m_currentLength = transform.localScale.z;

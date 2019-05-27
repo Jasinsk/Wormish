@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class TimerController : MonoBehaviour
 {
+    // The class responsible for controlling game time duration and level ending
+
     public GameObject ProgressIndicator;
     void Start()
     {
@@ -13,10 +15,7 @@ public class TimerController : MonoBehaviour
         m_indicatorTransform = ProgressIndicator.GetComponent<RectTransform>();
         m_maxScale = m_indicatorTransform.localScale.x;
 
-        m_indicatorTransform.localScale = new Vector3(0, 0, 1);
-
-
-
+        //m_indicatorTransform.localScale = new Vector3(0, 0, 1);
     }
     void Update()
     {

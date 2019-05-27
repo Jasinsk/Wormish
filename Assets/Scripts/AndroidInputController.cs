@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// The class responsible for input control on Android
 public class AndroidInputController : MonoBehaviour
 {
-
     public GameObject Worm;
     public GameObject GameController;
 
