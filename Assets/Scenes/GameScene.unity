@@ -10742,6 +10742,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ProgressIndicator: {fileID: 1078644586}
+  ProgressIndicatorBackground: {fileID: 2061607652}
 --- !u!1 &800241505
 GameObject:
   m_ObjectHideFlags: 0

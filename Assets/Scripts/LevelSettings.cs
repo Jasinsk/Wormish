@@ -36,7 +36,8 @@ public class LevelSettings : MonoBehaviour
         m_starvation = false;
         m_Holes = true;
         m_daySet = true;
-        m_levelDuration = 10;
+        m_timeLimit = true;
+        m_levelDuration = 100;
     }
     public void SetLevelTwo()
     {
@@ -44,7 +45,8 @@ public class LevelSettings : MonoBehaviour
         m_starvation = true;
         m_Holes = true;
         m_daySet = true;
-        m_levelDuration = 10;
+        m_timeLimit = true;
+        m_levelDuration = 150;
     }
     public void SetLevelThree()
     {
@@ -52,7 +54,8 @@ public class LevelSettings : MonoBehaviour
         m_starvation = true;
         m_Holes = true;
         m_daySet = false;
-        m_levelDuration = 10;
+        m_timeLimit = true;
+        m_levelDuration = 150;
     }
     public void SetLevelFour()
     {
@@ -60,7 +63,8 @@ public class LevelSettings : MonoBehaviour
         m_starvation = true;
         m_Holes = true;
         m_daySet = true;
-        m_levelDuration = 10;
+        m_timeLimit = true;
+        m_levelDuration = 200;
     }
     public void SetEndless()
     {
@@ -68,6 +72,7 @@ public class LevelSettings : MonoBehaviour
         m_starvation = true;
         m_Holes = true;
         m_daySet = true;
+        m_timeLimit = false;
     }
 
     public bool GetDayCycleSet()
@@ -90,8 +95,13 @@ public class LevelSettings : MonoBehaviour
     {
         return m_levelDuration;
     }
+    public bool GetTimeLimit()
+    {
+        return m_timeLimit;
+    }
     private bool m_dayCycle, m_starvation, m_Holes = false;
     private bool m_daySet = true;
     private int m_levelDuration;
-    private static bool wasCreated = false;    
+    private static bool wasCreated = false;
+    private bool m_timeLimit = true;
 }
