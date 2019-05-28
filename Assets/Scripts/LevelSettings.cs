@@ -37,7 +37,7 @@ public class LevelSettings : MonoBehaviour
         m_Holes = true;
         m_daySet = true;
         m_timeLimit = true;
-        m_levelDuration = 20; //100
+        m_levelDuration = 100;
     }
     public void SetLevelTwo()
     {
@@ -46,7 +46,7 @@ public class LevelSettings : MonoBehaviour
         m_Holes = true;
         m_daySet = true;
         m_timeLimit = true;
-        m_levelDuration = 30; //150
+        m_levelDuration = 150;
     }
     public void SetLevelThree()
     {
@@ -55,7 +55,7 @@ public class LevelSettings : MonoBehaviour
         m_Holes = true;
         m_daySet = false;
         m_timeLimit = true;
-        m_levelDuration = 10; //10
+        m_levelDuration = 150;
     }
     public void SetLevelFour()
     {
@@ -64,7 +64,7 @@ public class LevelSettings : MonoBehaviour
         m_Holes = true;
         m_daySet = true;
         m_timeLimit = true;
-        m_levelDuration = 20; //200
+        m_levelDuration = 200;
     }
     public void SetEndless()
     {
