@@ -19,7 +19,7 @@ public class WormLogoController : MonoBehaviour
         {
             if (transform.localScale.y < wormScaleMax)
             {
-                transform.localScale += new Vector3(-0.002f, 0.02f, 0);
+                transform.localScale += new Vector3(-0.0025f, 0.025f, 0);
             }
             else
             {
@@ -30,7 +30,7 @@ public class WormLogoController : MonoBehaviour
         {
             if (transform.localScale.y > wormScaleMin)
             {
-                transform.localScale += new Vector3(0.002f, -0.02f, 0);
+                transform.localScale += new Vector3(0.0025f, -0.025f, 0);
             }
             else
             {
