@@ -15,7 +15,7 @@ public class TutorialController : MonoBehaviour
         m_buttonPositionY = button.transform.localPosition.y;
         m_panelOpacity = panel.GetComponent<Image>().color.a;
 
-        button.transform.localPosition += new Vector3(0, 100, 0);
+        button.transform.localPosition += new Vector3(0, 200, 0);
         StartCoroutine("TutorialWindowCoroutine");
 
         Color tempPanelColor = panel.GetComponent<Image>().color;
@@ -38,7 +38,7 @@ public class TutorialController : MonoBehaviour
         {
             if (button.transform.localPosition.y > m_buttonPositionY)
             {
-                button.transform.localPosition -= new Vector3(0, 3, 0);
+                button.transform.localPosition -= new Vector3(0, 5, 0);
                 yield return new WaitForSeconds(0.005f);
             }
             else if (text.GetComponent<Text>().color.a < 0.9)
@@ -77,9 +77,9 @@ public class TutorialController : MonoBehaviour
 
                 yield return new WaitForSeconds(0.05f);
             }
-            else if(button.transform.localPosition.y < m_buttonPositionY + 100)
+            else if(button.transform.localPosition.y < m_buttonPositionY + 200)
             {
-                button.transform.localPosition += new Vector3(0, 3, 0);
+                button.transform.localPosition += new Vector3(0, 5, 0);
                 yield return new WaitForSeconds(0.005f);
             }
             else
@@ -91,7 +91,7 @@ public class TutorialController : MonoBehaviour
 
     public void CloseTutorial()
     {
-        //m_tutorialOpen = false;
+        m_tutorialOpen = false;
     }
 
     private bool m_tutorialOpen = true;
