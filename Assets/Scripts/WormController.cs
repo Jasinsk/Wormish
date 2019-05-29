@@ -9,6 +9,7 @@ public class WormController : MonoBehaviour
     public float wormScaleMin = 2;
     public Color starterColor;
     public GameObject nightlight;
+    public AudioClip deathSqueak;
 
     void Start()
     {
@@ -114,18 +115,21 @@ public class WormController : MonoBehaviour
 
     public void Die()
     {
+        m_audioSource.PlayOneShot(deathSqueak);
         m_material.color = Color.red;
         m_running = false;
     }
 
     public void Starve()
     {
+        m_audioSource.PlayOneShot(deathSqueak);
         m_material.color = Color.white;
         m_running = false;
     }
 
     public void Drop()
     {
+        m_audioSource.PlayOneShot(deathSqueak);
         m_running = false;
         StopAllCoroutines();
         StartCoroutine("PanicAnimation");

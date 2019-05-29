@@ -12150,6 +12150,7 @@ MonoBehaviour:
   wormScaleMin: 2
   starterColor: {r: 0.9150943, g: 0.5222944, b: 0.8695523, a: 1}
   nightlight: {fileID: 1061975489}
+  deathSqueak: {fileID: 8300000, guid: 57c78fc9ad3862e4db551ee6aebf3335, type: 3}
 --- !u!54 &837799575
 Rigidbody:
   m_ObjectHideFlags: 0
