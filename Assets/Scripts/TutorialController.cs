@@ -12,6 +12,8 @@ public class TutorialController : MonoBehaviour
 
     void Start()
     {
+        m_audioSource = GetComponent<AudioSource>();
+
         m_buttonPositionY = button.transform.localPosition.y;
         m_panelOpacity = panel.GetComponent<Image>().color.a;
 
@@ -43,6 +45,11 @@ public class TutorialController : MonoBehaviour
             }
             else if (text.GetComponent<Text>().color.a < 0.9)
             {
+                if (!m_played)
+                {
+                    m_audioSource.PlayOneShot(m_audioSource.clip);
+                    m_played = true;
+                }
                 if (panel.GetComponent<Image>().color.a < m_panelOpacity)
                 {
                     Color tempPanelColor = panel.GetComponent<Image>().color;
@@ -97,5 +104,7 @@ public class TutorialController : MonoBehaviour
     private bool m_tutorialOpen = true;
     private float m_buttonPositionY;
     private float m_panelOpacity;
+    private AudioSource m_audioSource;
+    private bool m_played = false;
 
 }

@@ -12,6 +12,7 @@ public class WormController : MonoBehaviour
 
     void Start()
     {
+        m_audioSource = GetComponent<AudioSource>();
         m_material = GetComponent<Renderer>().material;
         m_material.color = starterColor;
         m_rigidbody = GetComponent<Rigidbody>();
@@ -215,6 +216,7 @@ public class WormController : MonoBehaviour
     {
         if (m_running)
         {
+            m_audioSource.PlayOneShot(m_audioSource.clip);
             StartCoroutine("RollLeftCoroutine");
         }
     }
@@ -238,6 +240,7 @@ public class WormController : MonoBehaviour
     {
         if (m_running)
         {
+            m_audioSource.PlayOneShot(m_audioSource.clip);
             StartCoroutine("RollRightCoroutine");
         }
     }
@@ -281,4 +284,5 @@ public class WormController : MonoBehaviour
     private bool m_charging = false;
     private int m_foodStatus = 1000;
     private LevelSettings settings;
+    private AudioSource m_audioSource;
 }

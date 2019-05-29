@@ -32,6 +32,7 @@ public class GameController : MonoBehaviour
         m_wormController = Worm.GetComponent<WormController>();
         m_lightController = Sun.GetComponent<LightController>();
         m_levelController = FindObjectOfType<LevelController>();
+        m_audioSource = GetComponent<AudioSource>();
 
         daytime = m_lightController.GetSunUp();
         premptiveDayTime = m_lightController.GetPremptiveSunUp();
@@ -107,6 +108,7 @@ public class GameController : MonoBehaviour
     // Called when our worm charges through a rock
     private void DestroyRock(GameObject Rock)
     {
+        m_audioSource.PlayOneShot(m_audioSource.clip);
         Rock.GetComponent<Platform>().DestroyRock();
     }
     // Used to move platforms backwards creating our terrain movement
@@ -224,4 +226,5 @@ public class GameController : MonoBehaviour
     private LightController m_lightController;
     private LevelController m_levelController;
     private bool m_gameRunning = true;
+    private AudioSource m_audioSource;
 }
