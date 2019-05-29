@@ -185,6 +185,15 @@ public class GameController : MonoBehaviour
         {
             platform.transform.Translate(-platform.transform.position.x + terrainWidth/2.0f, 0, 0);
         }
+        CheckAllignment(platform);
+    }
+
+    private void CheckAllignment(GameObject platform)
+    {
+        if (platform.transform.position.x % 2.5f == 0)
+        {
+
+        }
     }
     // Makes terrain bocks uneven and randomizes their color
     private void ScatterTerrain()
