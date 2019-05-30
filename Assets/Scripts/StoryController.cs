@@ -25,7 +25,10 @@ public class StoryController : MonoBehaviour
         m_panelOpacity = panel.GetComponent<Image>().color.a;
 
         button.transform.localPosition += new Vector3(0, 200, 0);
-        StartCoroutine("StoryWindowCoroutine");
+        if (!settings.GetLevelReplay())
+        {
+            StartCoroutine("StoryWindowCoroutine");
+        }
 
         Color tempPanelColor = panel.GetComponent<Image>().color;
         tempPanelColor.a = 0;

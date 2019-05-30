@@ -12,7 +12,7 @@ public class AndroidInputController : MonoBehaviour
     {
         m_gameController = GameController.GetComponent<GameController>();
         m_wormController = Worm.GetComponent<WormController>();
-        dragDistance = Screen.height * 15 / 100; //dragDistance is 15% height of the screen
+        dragDistance = Screen.height * 10 / 100; //dragDistance is 15% height of the screen
     }
 
     void Update()

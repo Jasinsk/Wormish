@@ -75,6 +75,11 @@ public class LevelSettings : MonoBehaviour
         m_timeLimit = false;
     }
 
+    public void SetLevelReplay(bool reset)
+    {
+        m_levelReplay = reset;
+    }
+
     public bool GetDayCycleSet()
     {
         return m_dayCycle;
@@ -99,9 +104,14 @@ public class LevelSettings : MonoBehaviour
     {
         return m_timeLimit;
     }
+    public bool GetLevelReplay()
+    {
+        return m_levelReplay;
+    }
     private bool m_dayCycle, m_starvation, m_Holes = false;
     private bool m_daySet = true;
     private int m_levelDuration;
     private static bool wasCreated = false;
     private bool m_timeLimit = true;
+    private bool m_levelReplay = false;
 }

@@ -44,16 +44,19 @@ public class LevelController : MonoBehaviour
     // Switches onto the next level
     public void NextLevel()
     {
+        settings.SetLevelReplay(false);
         StartLevel(settings.currentLevel + 1);
     }
     // Plays same level once more
     public void ReplayLevel()
     {
+        settings.SetLevelReplay(true);
         StartLevel(settings.currentLevel);
     }
     // Changes scene to the main menu
     public void ReturnToMenu()
     {
+        settings.SetLevelReplay(false);
         Application.LoadLevel(menuScene);
     }
     // Exits game
