@@ -35,6 +35,13 @@ public class StoryController : MonoBehaviour
         panel.GetComponent<Image>().color = tempPanelColor;
 
         Color tempTextColor = text.GetComponent<Text>().color;
+        
+        if (!settings.GetDaySet())
+        {
+            m_panelOpacity = 0.9f;
+            tempTextColor = Color.black;
+        }
+
         tempTextColor.a = 0;
         text.GetComponent<Text>().color = tempTextColor;
 
