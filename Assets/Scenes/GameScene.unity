@@ -7632,7 +7632,7 @@ GameObject:
   - component: {fileID: 463188675}
   - component: {fileID: 463188676}
   m_Layer: 0
-  m_Name: Tutorial Canvas
+  m_Name: Story Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7732,10 +7732,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ad5505b189b50c429dbd5c1d26bc2d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tutorialDuration: 5
+  storyDuration: 5
   panel: {fileID: 1452588423}
   text: {fileID: 942764614}
   button: {fileID: 1332198356}
+  story_1: 
+  story_2: 
+  story_3: 
+  story_4: 
+  story_5: 
 --- !u!82 &463188676
 AudioSource:
   m_ObjectHideFlags: 0
@@ -21262,7 +21267,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 463188675}
-        m_MethodName: CloseTutorial
+        m_MethodName: CloseStory
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
