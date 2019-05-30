@@ -7736,11 +7736,16 @@ MonoBehaviour:
   panel: {fileID: 1452588423}
   text: {fileID: 942764614}
   button: {fileID: 1332198356}
-  story_1: 
-  story_2: 
-  story_3: 
-  story_4: 
-  story_5: 
+  story_1: Welcome to the world young Wormish! Have fun running around but be sure
+    not to hurt yourself
+  story_2: You seem to be looking a bit pale. Make sure you remember to eat something
+    once in a while
+  story_3: Who goes out on an adventure at night!? Make sure to keep your light charged
+    by munching on those glowing flowers
+  story_4: Well we couldn't really expect everything to stay the same forever. Let's
+    see how you can manage
+  story_5: 'This is a bit awkward... Maybe you can go out and find a point to all
+    this because I seem to be all out '
 --- !u!82 &463188676
 AudioSource:
   m_ObjectHideFlags: 0
@@ -14091,7 +14096,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 300
-    m_Alignment: 0
+    m_Alignment: 1
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
