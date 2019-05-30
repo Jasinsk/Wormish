@@ -121,7 +121,7 @@ public class GameController : MonoBehaviour
     {
         if (m_wormController.GetRunning() && !m_turning)
         {
-            m_turning = true;
+            //m_turning = true;
             foreach (GameObject platform in platforms)
             {
                 IEnumerator coroutine = GoLeftCoroutine(platform);
@@ -149,7 +149,7 @@ public class GameController : MonoBehaviour
     {
         if (m_wormController.GetRunning() && !m_turning)
         {
-            m_turning = true;
+            //m_turning = true;
             foreach (GameObject platform in platforms)
             {
                 IEnumerator coroutine = GoRightCoroutine(platform);
