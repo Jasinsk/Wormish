@@ -119,13 +119,15 @@ public class GameController : MonoBehaviour
     // Called when our worm goes left
     public void GoLeft()
     {
-        if (m_wormController.GetRunning())
+        if (m_wormController.GetRunning() && !m_turning)
         {
+            m_turning = true;
             foreach (GameObject platform in platforms)
             {
                 IEnumerator coroutine = GoLeftCoroutine(platform);
                 StartCoroutine(coroutine);
             }
+            StartCoroutine("TurningCooldownCoroutine");
         }
     }
     // Coroutine responsible for the turning animation together with the movement of the platforms when moving left
@@ -145,13 +147,15 @@ public class GameController : MonoBehaviour
     // Called when our worm goes right
     public void GoRight()
     {
-        if (m_wormController.GetRunning())
+        if (m_wormController.GetRunning() && !m_turning)
         {
+            m_turning = true;
             foreach (GameObject platform in platforms)
             {
                 IEnumerator coroutine = GoRightCoroutine(platform);
                 StartCoroutine(coroutine);
             }
+            StartCoroutine("TurningCooldownCoroutine");
         }
     }
     // Coroutine responsible for the turning animation together with the movement of the platforms when moving right
@@ -187,15 +191,12 @@ public class GameController : MonoBehaviour
         {
             platform.transform.Translate(-platform.transform.position.x + terrainWidth/2.0f, 0, 0);
         }
-        CheckAllignment(platform);
     }
 
-    private void CheckAllignment(GameObject platform)
+    private IEnumerator TurningCooldownCoroutine()
     {
-        if (platform.transform.position.x % 2.5f == 0)
-        {
-
-        }
+        yield return new WaitForSeconds(m_turnDuration);
+        m_turning = false;
     }
     // Makes terrain bocks uneven and randomizes their color
     private void ScatterTerrain()
@@ -227,4 +228,5 @@ public class GameController : MonoBehaviour
     private LevelController m_levelController;
     private bool m_gameRunning = true;
     private AudioSource m_audioSource;
+    private bool m_turning = false;
 }
