@@ -41,6 +41,7 @@ public class LevelController : MonoBehaviour
         }
         Application.LoadLevel(gameScene);
     }
+    // These functions are used to make the buttons of the GUI work
     // Switches onto the next level
     public void NextLevel()
     {

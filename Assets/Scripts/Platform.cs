@@ -5,32 +5,28 @@ using UnityEngine;
 // The class used to represent every single terrain block and it's paramaters
 public class Platform : MonoBehaviour
 {
-    public Color[] GrassColors;
-    public Color[] RockColors;
+    public Color[] GrassColors; // list of the possible grass colors
+    public Color[] RockColors; // list of the possible rock colors
     public Color DestroyedRock;
-    public GameObject Apple;
-    public GameObject Grass;
-    public GameObject LightFlower;
+    public GameObject Apple; // apple prefab ready for loading
+    public GameObject Grass; 
+    public GameObject LightFlower; // flower prefab
     void Start()
     {
+        // loading private variable values
         m_collider = GetComponent<Collider>();
         m_material = GetComponent<Renderer>().material;
         settings = GameObject.FindGameObjectWithTag("LevelSettings").GetComponent<LevelSettings>();
     }
 
-
-    void Update()
-    {
-
-    }
     // Controlling player interactions with rocks and holes
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player" && m_isRock)
+        if (other.tag == "Player" && m_isRock) // if the worm hits a rock
         {
             m_hitWorm = true;
         }
-        else if (other.tag == "Player" && m_isHole)
+        else if (other.tag == "Player" && m_isHole) // if the worm hits a hole
         {
             m_dropedWorm = true;
         }
@@ -39,8 +35,8 @@ public class Platform : MonoBehaviour
     // Animates the rise of rock pillars in the distance
     private IEnumerator RaiseRockCoroutine()
     {
-        m_material.color = RockColors[Random.Range(0, RockColors.Length - 1)];
-        while ( transform.localScale.y < 17)
+        m_material.color = RockColors[Random.Range(0, RockColors.Length - 1)]; // changes the block color
+        while ( transform.localScale.y < 17) // raises the rock block
         {
             transform.localScale += new Vector3(0, 0.07f, 0);
             yield return new WaitForSeconds(0.02f);
@@ -56,7 +52,7 @@ public class Platform : MonoBehaviour
         bool side = true;
         while (t > 0)
         {
-            if(side)
+            if(side) // shaking animation
             {
                 transform.localPosition += new Vector3(0.1f, 0, 0);
                 side = !side;
@@ -71,18 +67,18 @@ public class Platform : MonoBehaviour
                 yield return new WaitForSeconds(0.02f);
             }
         }
-        while (transform.localPosition.y > -5)
+        while (transform.localPosition.y > -5) // lowering the falling block
         {
             transform.localPosition += new Vector3(0, -0.5f, 0);
             yield return new WaitForSeconds(0.05f);
         }
-        GetComponent<MeshRenderer>().enabled = false;
-        transform.localScale = new Vector3(0.1f, 10, 0.1f);
+        GetComponent<MeshRenderer>().enabled = false; // making the block invisible 
+        transform.localScale = new Vector3(0.1f, 10, 0.1f); // changing the collider scale to catch when the worm should fall down
         transform.localPosition = new Vector3(transform.localPosition.x, -2.5f, transform.localPosition.z);
 
         yield break;
     }
-    // Random creation of blocks as rocks wholes or ordinary blocks
+    // Random creation of blocks as rocks, holes or ordinary blocks
     public void CheckIfRockOrHole()
     {
         DestroyChildren();
@@ -159,14 +155,15 @@ public class Platform : MonoBehaviour
     {
         GetComponent<Renderer>().material.color = GrassColors[Random.Range(0, GrassColors.Length - 1)];
     }
+    // turns rock block into destroyed block
     public void DestroyRock()
     {
-        m_collider.isTrigger = false;
+        m_collider.isTrigger = false; // block no longer can hit the worm
         m_hitWorm = false;
-        m_material.color = DestroyedRock;
-        transform.localScale = new Vector3(5, 5, 5);
+        m_material.color = DestroyedRock; // changes the color
+        transform.localScale = new Vector3(5, 5, 5); // changes the size
     }
-
+    // destroys all children of an object
     public void DestroyChildren()
     {
         foreach (Transform child in transform)
@@ -174,14 +171,14 @@ public class Platform : MonoBehaviour
             GameObject.Destroy(child.gameObject);
         }
     }
-
+    // places an apple object on the platform
     public void SpawnApple()
     {
         m_apple = Instantiate(Apple, new Vector3(transform.position.x, transform.position.y + 3, transform.position.z), Quaternion.identity);
         m_apple.transform.parent = transform;
         m_hasApple = true;
     }
-
+    // places a light flower object on the platform
     public void SpawnLightFlower()
     {
         m_flower = Instantiate(LightFlower, new Vector3(transform.position.x, transform.position.y + 3, transform.position.z), Quaternion.identity);
@@ -189,7 +186,7 @@ public class Platform : MonoBehaviour
         m_flower.transform.localEulerAngles += new Vector3(45, 0, 45);
         m_hasApple = true;
     }
-
+    // places grass object - currently not used
     public void SpawnGrass()
     {
         GameObject m_grass = Instantiate(Grass, new Vector3(transform.position.x - 0.94f, transform.position.y - 56.29f + 2.5f, transform.position.z + 60.29f), Quaternion.identity);

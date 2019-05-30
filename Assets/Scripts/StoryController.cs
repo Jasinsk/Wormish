@@ -5,19 +5,21 @@ using UnityEngine.UI;
 
 public class StoryController : MonoBehaviour
 {
-    public float storyDuration = 5;
+    public float storyDuration = 5; // the duration of the message
     public GameObject panel;
     public GameObject text;
     public GameObject button;
+    // the texts of the messages that are assigned to each level
     public string story_1;
     public string story_2;
     public string story_3;
     public string story_4;
     public string story_5;
 
+    //The class responsible for the level starting messages
     void Start()
     {
-        settings = GameObject.FindGameObjectWithTag("LevelSettings").GetComponent<LevelSettings>();
+        settings = GameObject.FindGameObjectWithTag("LevelSettings").GetComponent<LevelSettings>(); // get the settings object
 
         m_audioSource = GetComponent<AudioSource>();
 
@@ -25,11 +27,12 @@ public class StoryController : MonoBehaviour
         m_panelOpacity = panel.GetComponent<Image>().color.a;
 
         button.transform.localPosition += new Vector3(0, 200, 0);
-        if (!settings.GetLevelReplay())
+        if (!settings.GetLevelReplay()) // stops the message from showing when level is being replayed
         {
             StartCoroutine("StoryWindowCoroutine");
         }
 
+        // variables used to allow the fading in and out of the level messages
         Color tempPanelColor = panel.GetComponent<Image>().color;
         tempPanelColor.a = 0;
         panel.GetComponent<Image>().color = tempPanelColor;
@@ -45,17 +48,12 @@ public class StoryController : MonoBehaviour
         tempTextColor.a = 0;
         text.GetComponent<Text>().color = tempTextColor;
 
-        AssignStoryText();
-    }
-
-    void Update()
-    {
-        
+        AssignStoryText(); // used to change the message text between levels
     }
 
     public void AssignStoryText()
     {
-        switch(settings.currentLevel)
+        switch(settings.currentLevel) // changes message text to that required on the current level
         {
             case 1:
                 text.GetComponent<Text>().text = story_1;
@@ -74,20 +72,21 @@ public class StoryController : MonoBehaviour
                 break;
         }
     }
+    // playes the animation of the lowering bubble, and fading message window
     private IEnumerator StoryWindowCoroutine()
     {
         while (m_storyOpen)
         {
-            if (button.transform.localPosition.y > m_buttonPositionY)
+            if (button.transform.localPosition.y > m_buttonPositionY) // lowers the button
             {
                 button.transform.localPosition -= new Vector3(0, 5, 0);
                 yield return new WaitForSeconds(0.005f);
             }
-            else if (text.GetComponent<Text>().color.a < 0.9)
+            else if (text.GetComponent<Text>().color.a < 0.9) // fades in the text box
             {
                 if (!m_played)
                 {
-                    m_audioSource.PlayOneShot(m_audioSource.clip);
+                    m_audioSource.PlayOneShot(m_audioSource.clip); // plays sound
                     m_played = true;
                 }
                 if (panel.GetComponent<Image>().color.a < m_panelOpacity)
@@ -105,14 +104,14 @@ public class StoryController : MonoBehaviour
             }
             else
             {
-                yield return new WaitForSeconds(storyDuration);
+                yield return new WaitForSeconds(storyDuration); // waits for the given amount of time
 
                 break;
             }
         }
-        while (true)
+        while (true) // fades the message out and lifts the button
         {
-            if (text.GetComponent<Text>().color.a >= 0)
+            if (text.GetComponent<Text>().color.a >= 0) // fade out
             {
                 Color tempPanelColor = panel.GetComponent<Image>().color;
                 tempPanelColor.a -= 0.05f;
@@ -124,7 +123,7 @@ public class StoryController : MonoBehaviour
 
                 yield return new WaitForSeconds(0.05f);
             }
-            else if(button.transform.localPosition.y < m_buttonPositionY + 200)
+            else if(button.transform.localPosition.y < m_buttonPositionY + 200) // rising button
             {
                 button.transform.localPosition += new Vector3(0, 5, 0);
                 yield return new WaitForSeconds(0.005f);
@@ -135,7 +134,7 @@ public class StoryController : MonoBehaviour
             }
         }
     }
-
+    // used when button is pressed to close the message earlier 
     public void CloseStory()
     {
         m_storyOpen = false;

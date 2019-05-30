@@ -6,11 +6,13 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
+    //Assigning all our public variables
+
     public GameObject Worm;
     public GameObject Sun;
-    public float terrainSpeed = 0.5f;
-    public float speedStep = 0.00001f;
-    public float maxTerrainSpeed = 1f;
+    public float terrainSpeed = 0.5f; // the speed at which the terrain moves around us
+    public float speedStep = 0.00001f; // the step by which the terrain speed is changed
+    public float maxTerrainSpeed = 1f; // max speed the terrain wil reach
     public int terrainLength;
     public int terrainWidth;
     public Material[] materials;
@@ -18,20 +20,22 @@ public class GameController : MonoBehaviour
     public GameObject starvedText;
     public GameObject levelFinishedCanvas;
 
-    public static bool daytime;
-    public static bool premptiveDayTime;
+    public static bool daytime; // a static variable allowing globally to check whether it is currently day
+    public static bool premptiveDayTime; // a pre check for the day to allow proper headlight scripting
     void Start()
     {
-        Application.targetFrameRate = 60;
+        Application.targetFrameRate = 60; // Locking the max framerate to 60 to preserve battery life (not many phones have displays that go over 60 FPS)
 
         if (platforms == null)
         {
-            platforms = GameObject.FindGameObjectsWithTag("Platform");
+            platforms = GameObject.FindGameObjectsWithTag("Platform"); // Creating a list of all terrain blocks
         }
-        ScatterTerrain();
+        ScatterTerrain(); // Changes block color and height at game start
+        // assigning all required controllers to variables
         m_wormController = Worm.GetComponent<WormController>();
         m_lightController = Sun.GetComponent<LightController>();
         m_levelController = FindObjectOfType<LevelController>();
+        // grabing the audio source
         m_audioSource = GetComponent<AudioSource>();
 
         daytime = m_lightController.GetSunUp();
@@ -40,46 +44,46 @@ public class GameController : MonoBehaviour
 
     void Update()
     {
-        if (m_gameRunning)
+        if (m_gameRunning) // checks if game is not stoped
         {
             // Moving and creating all the platforms responsible for our game terrain
             foreach (GameObject platform in platforms)
             {
-                GoForward(platform);
+                GoForward(platform); // move all platforms forward
                 if (platform.transform.position.z < -10)
                 {
-                    RegenerateTerrain(platform);
+                    RegenerateTerrain(platform); // take all passed blocks and move them to the front
                 }
                 if (platform.transform.position.x > (terrainWidth/ 2))
                 {
-                    TeleportTerrain(platform, true);
+                    TeleportTerrain(platform, true); // moving blocks that we moved away from turning
                 }
                 else if (platform.transform.position.x < (-terrainWidth/ 2))
                 {
-                    TeleportTerrain(platform, false);
+                    TeleportTerrain(platform, false); // moving blocks that we moved away from turning
                 }
                 if (platform.GetComponent<Platform>().GetHitWorm() && m_wormController.GetCharging())
                 {
-                    DestroyRock(platform);
+                    DestroyRock(platform); // destroy rock if it was charged through by the worm
                 }
                 else if (platform.GetComponent<Platform>().GetHitWorm())
                 {
-                    KillWorm();
+                    KillWorm(); // kill worm if it hit a rock 
                 }
                 if (platform.GetComponent<Platform>().GetDroppedWorm())
                 {
-                    DropWorm();
+                    DropWorm(); // drop worm if it walks onto a hole
                 }
                 if (m_wormController.GetFoodStatus() < 0)
                 {
-                    StarveWorm();
+                    StarveWorm(); // kill worm if it runs out of food
                 }
-                daytime = m_lightController.GetSunUp();
+                daytime = m_lightController.GetSunUp(); // update day status
                 premptiveDayTime = m_lightController.GetPremptiveSunUp();
 
                 if (terrainSpeed < maxTerrainSpeed)
                 {
-                    terrainSpeed += speedStep;
+                    terrainSpeed += speedStep; // speed game up
                 }
             }
         }
@@ -108,6 +112,7 @@ public class GameController : MonoBehaviour
     // Called when our worm charges through a rock
     private void DestroyRock(GameObject Rock)
     {
+        RandomizeAudioPitch();
         m_audioSource.PlayOneShot(m_audioSource.clip);
         Rock.GetComponent<Platform>().DestroyRock();
     }
@@ -121,7 +126,7 @@ public class GameController : MonoBehaviour
     {
         if (m_wormController.GetRunning() && !m_turning)
         {
-            //m_turning = true;
+            m_turning = true;
             foreach (GameObject platform in platforms)
             {
                 IEnumerator coroutine = GoLeftCoroutine(platform);
@@ -149,7 +154,7 @@ public class GameController : MonoBehaviour
     {
         if (m_wormController.GetRunning() && !m_turning)
         {
-            //m_turning = true;
+            m_turning = true;
             foreach (GameObject platform in platforms)
             {
                 IEnumerator coroutine = GoRightCoroutine(platform);
@@ -215,6 +220,10 @@ public class GameController : MonoBehaviour
         levelFinishedCanvas.SetActive(true);
     }
 
+    public void RandomizeAudioPitch()
+    {
+        m_audioSource.pitch = 1 + Random.Range(-0.2f, 0.2f);
+    }
 
     public bool GetGameRunning()
     {

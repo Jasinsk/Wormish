@@ -15,7 +15,7 @@ public class LevelSettings : MonoBehaviour
     {
         if (!wasCreated)
         {
-            DontDestroyOnLoad(gameObject);
+            DontDestroyOnLoad(gameObject); // making this object not destroyable upon scene changes
             wasCreated = true;
         }
         else
@@ -24,20 +24,15 @@ public class LevelSettings : MonoBehaviour
         }
 
     }
-
-    void Update()
-    {
-        
-    }
     // Setting up all the particular level settings
     public void SetLevelOne()
     {
-        m_dayCycle = false;
-        m_starvation = false;
-        m_Holes = true;
-        m_daySet = true;
-        m_timeLimit = true;
-        m_levelDuration = 50;
+        m_dayCycle = false; // Does this level have a day/night cycle?
+        m_starvation = false; // Does the starvation mechanic work on this level? 
+        m_Holes = true; // Do holes show up?
+        m_daySet = true; // is it day or night at the start of the level?
+        m_timeLimit = true; // is their a time duration of the level?
+        m_levelDuration = 50; // setting the level duration
     }
     public void SetLevelTwo()
     {
@@ -75,7 +70,7 @@ public class LevelSettings : MonoBehaviour
         m_timeLimit = false;
     }
 
-    public void SetLevelReplay(bool reset)
+    public void SetLevelReplay(bool reset) // 
     {
         m_levelReplay = reset;
     }
