@@ -9,6 +9,11 @@ public class TutorialController : MonoBehaviour
     public GameObject panel;
     public GameObject text;
     public GameObject button;
+    public Text tutorial_1;
+    public Text tutorial_2;
+    public Text tutorial_3;
+    public Text tutorial_4;
+    public Text tutorial_5;
 
     void Start()
     {

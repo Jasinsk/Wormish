@@ -1213,6 +1213,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1446261956}
   - component: {fileID: 1446261955}
+  - component: {fileID: 1446261958}
   - component: {fileID: 1446261957}
   m_Layer: 0
   m_Name: Audio Source
@@ -1233,7 +1234,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: cfbc2c74b00aefd4c9b40bfa01f295d4, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.5
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1344,6 +1345,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tag: Music
+--- !u!114 &1446261958
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1446261954}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54fd448e006f0dc489e01e57f0b23ead, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1448095605
 GameObject:
   m_ObjectHideFlags: 0

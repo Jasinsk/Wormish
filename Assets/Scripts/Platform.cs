@@ -39,7 +39,7 @@ public class Platform : MonoBehaviour
     // Animates the rise of rock pillars in the distance
     private IEnumerator RaiseRockCoroutine()
     {
-        m_material.color = RockColors[Random.Range(0, 3)];
+        m_material.color = RockColors[Random.Range(0, RockColors.Length - 1)];
         while ( transform.localScale.y < 17)
         {
             transform.localScale += new Vector3(0, 0.07f, 0);
@@ -101,7 +101,7 @@ public class Platform : MonoBehaviour
         else if (rand > 0.9 && settings.GetHolesSet())
         {
             // Change platform into hole
-            m_material.color = GrassColors[Random.Range(0, 3)];
+            m_material.color = GrassColors[Random.Range(0, GrassColors.Length - 1)];
             transform.localScale = new Vector3(5, 5, 5);
 
             m_isRock = false;
@@ -117,7 +117,7 @@ public class Platform : MonoBehaviour
             GetComponent<MeshRenderer>().enabled = true;
             m_isRock = false;
             m_collider.isTrigger = false;
-            m_material.color = GrassColors[Random.Range(0,3)];
+            m_material.color = GrassColors[Random.Range(0, GrassColors.Length - 1)];
             transform.localScale = new Vector3(5, 5, 5);
             SpawnApple();
         }
@@ -128,7 +128,7 @@ public class Platform : MonoBehaviour
             GetComponent<MeshRenderer>().enabled = true;
             m_isRock = false;
             m_collider.isTrigger = false;
-            m_material.color = GrassColors[Random.Range(0, 3)];
+            m_material.color = GrassColors[Random.Range(0, GrassColors.Length - 1)];
             transform.localScale = new Vector3(5, 5, 5);
             SpawnLightFlower();
         }
@@ -139,7 +139,7 @@ public class Platform : MonoBehaviour
             GetComponent<MeshRenderer>().enabled = true;
             m_isRock = false;
             m_collider.isTrigger = false;
-            m_material.color = GrassColors[Random.Range(0, 3)];
+            m_material.color = GrassColors[Random.Range(0, GrassColors.Length - 1)];
             transform.localScale = new Vector3(5, 5, 5);
             //SpawnGrass();
         }
@@ -150,14 +150,14 @@ public class Platform : MonoBehaviour
             GetComponent<MeshRenderer>().enabled = true;
             m_isRock = false;
             m_collider.isTrigger = false;
-            m_material.color = GrassColors[Random.Range(0, 3)];
+            m_material.color = GrassColors[Random.Range(0, GrassColors.Length - 1)];
             transform.localScale = new Vector3(5, 5, 5);
         }
     }
     // randomly assign grass color
     public void RandomGrassColor()
     {
-        GetComponent<Renderer>().material.color = GrassColors[Random.Range(0, 3)];
+        GetComponent<Renderer>().material.color = GrassColors[Random.Range(0, GrassColors.Length - 1)];
     }
     public void DestroyRock()
     {
