@@ -79,6 +79,10 @@ public class LevelSettings : MonoBehaviour
     {
         m_levelReplay = reset;
     }
+    public void SetAudioOn(bool value)
+    {
+        m_AudioOn = value;
+    }
 
     public bool GetDayCycleSet()
     {
@@ -108,10 +112,15 @@ public class LevelSettings : MonoBehaviour
     {
         return m_levelReplay;
     }
+    public bool GetAudioOn()
+    {
+        return m_AudioOn;
+    }
     private bool m_dayCycle, m_starvation, m_Holes = false;
     private bool m_daySet = true;
     private int m_levelDuration;
     private static bool wasCreated = false;
     private bool m_timeLimit = true;
     private bool m_levelReplay = false;
+    private bool m_AudioOn = true;
 }
