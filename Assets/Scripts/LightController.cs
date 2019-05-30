@@ -9,15 +9,15 @@ public class LightController : MonoBehaviour
 
     void Start()
     {
-        m_rotator = new Vector3(0, -rotationAngle, 0);
+        m_rotator = new Vector3(0, -rotationAngle, 0); // object used to rotate our lights
         m_light = GetComponent<Light>();
         settings = GameObject.FindGameObjectWithTag("LevelSettings").GetComponent<LevelSettings>();
-        if (!settings.GetDayCycleSet())
+        if (!settings.GetDayCycleSet()) // check whether this day has a day/nihgt cycle
         {
             m_premptiveSunUp = settings.GetDaySet();
             m_sunUp = settings.GetDaySet();
         }
-        if (!settings.GetDaySet())
+        if (!settings.GetDaySet()) //check if this level starts at day or night
         {
             transform.Rotate(m_switcher, Space.Self);
         }
@@ -27,13 +27,13 @@ public class LightController : MonoBehaviour
     {
         if (settings.GetDayCycleSet())
         {
-            transform.Rotate(m_rotator, Space.Self);
-            if (transform.rotation.eulerAngles.y > 90 && transform.rotation.eulerAngles.y < 270)
+            transform.Rotate(m_rotator, Space.Self); //rotate the light
+            if (transform.rotation.eulerAngles.y > 90 && transform.rotation.eulerAngles.y < 270) // check whether it is night
             {
                 m_light.enabled = false;
                 m_sunUp = false;
             }
-            else if (transform.rotation.eulerAngles.y > 360)
+            else if (transform.rotation.eulerAngles.y > 360) // return the object to the original rotation after 360 degrees of rotation
             {
                 transform.Rotate(m_backrotator, Space.Self);
             }
@@ -42,7 +42,7 @@ public class LightController : MonoBehaviour
                 m_light.enabled = true;
                 m_sunUp = true;
             }
-            if (transform.rotation.eulerAngles.y > 70 && transform.rotation.eulerAngles.y < 290)
+            if (transform.rotation.eulerAngles.y > 70 && transform.rotation.eulerAngles.y < 290) // checks whether night is starting to fall
             {
                 m_premptiveSunUp = false;
             }

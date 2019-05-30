@@ -16,18 +16,19 @@ public class PlayerController : MonoBehaviour
     
     void Update()
     {
-        if (Input.GetKeyDown("left"))
+        //check key inputs
+        if (Input.GetKeyDown("left")) //go left
         {
             m_gameController.GoLeft();
             m_wormController.RollLeft();
 
         }
-        else if (Input.GetKeyDown("right"))
+        else if (Input.GetKeyDown("right")) // go right
         {
             m_gameController.GoRight();
             m_wormController.RollRight();
         }
-        else if(Input.GetKeyDown("up"))
+        else if(Input.GetKeyDown("up")) // charge
         {
             m_wormController.Charge();
         }

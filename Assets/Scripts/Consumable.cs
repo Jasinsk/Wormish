@@ -22,11 +22,11 @@ public class Consumable : MonoBehaviour
         if (other.tag == "Player")
         {
             GetEaten();
-            GetComponent<MeshRenderer>().enabled = false;
+            GetComponent<MeshRenderer>().enabled = false; // makes oject disappear
             DestroyChildren();
         }
     }
-
+    // destroys all children objects
     public void DestroyChildren()
     {
         foreach (Transform child in transform)
@@ -37,7 +37,7 @@ public class Consumable : MonoBehaviour
     // Causes all consumable item effects
     private void GetEaten()
     {
-        if (apple)
+        if (apple) // decide what the consumable action will be
         {
             m_wormController.FeedMe();
         }

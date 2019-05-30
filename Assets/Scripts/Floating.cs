@@ -16,7 +16,7 @@ public class Floating : MonoBehaviour
 
     void Update()
     {
-        if (m_rising)
+        if (m_rising) // apple floating animation
         {
             if (transform.localPosition.y < maxHeight)
             {
@@ -39,14 +39,14 @@ public class Floating : MonoBehaviour
             }
         }
     }
-
+    // used to make the apple rotate while floating
     private IEnumerator RotatingCoroutine()
     {
-        Quaternion rotator = Quaternion.Euler(0, 15f, 0);
+        Quaternion rotator = Quaternion.Euler(0, 15f, 0); // the quaternion which will be used to rotate our object
         while (true)
         {
             Quaternion currentRotation = transform.localRotation;
-            transform.rotation = rotator * currentRotation;
+            transform.rotation = rotator * currentRotation; // calculate new quaternion value after rotation
             yield return new WaitForSeconds(0.2f);
         }
     }
