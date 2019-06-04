@@ -2349,7 +2349,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52bc81fa5b9ef6a43973e065f18ab4f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tag: Music
+  objectTag: Music
 --- !u!114 &1446261958
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2362,18 +2362,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54fd448e006f0dc489e01e57f0b23ead, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_audioSource: {fileID: 0}
-  m_direction: 1
 --- !u!1 &1448095605
 GameObject:
   m_ObjectHideFlags: 0
@@ -2667,6 +2655,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1473642218}
   - component: {fileID: 1473642217}
+  - component: {fileID: 1473642219}
   m_Layer: 0
   m_Name: Level Settings
   m_TagString: LevelSettings
@@ -2701,6 +2690,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1473642219
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1473642216}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 913e4e8c3d1e17f4798c63d14f58c7ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1482336114
 GameObject:
   m_ObjectHideFlags: 0
