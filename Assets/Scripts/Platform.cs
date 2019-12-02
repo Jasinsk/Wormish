@@ -2,24 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-// The class used to represent every single terrain block and it's paramaters
 public class Platform : MonoBehaviour
 {
-    public Color[] GrassColors; // list of the possible grass colors
-    public Color[] RockColors; // list of the possible rock colors
+    public Color[] GrassColors; 
+    public Color[] RockColors; 
     public Color DestroyedRock;
-    public GameObject Apple; // apple prefab ready for loading
+    public GameObject Apple; 
     public GameObject Grass; 
-    public GameObject LightFlower; // flower prefab
+    public GameObject LightFlower; 
+    public GameObject Tree;
     void Start()
     {
-        // loading private variable values
         m_collider = GetComponent<Collider>();
         m_material = GetComponent<Renderer>().material;
         settings = GameObject.FindGameObjectWithTag("LevelSettings").GetComponent<LevelSettings>();
     }
 
-    // Controlling player interactions with rocks and holes
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player" && m_isRock) // if the worm hits a rock
@@ -32,7 +30,6 @@ public class Platform : MonoBehaviour
         }
 
     }
-    // Animates the rise of rock pillars in the distance
     private IEnumerator RaiseRockCoroutine()
     {
         m_material.color = RockColors[Random.Range(0, RockColors.Length - 1)]; // changes the block color
@@ -44,7 +41,6 @@ public class Platform : MonoBehaviour
         transform.localScale = new Vector3(5, 17, 5);
         yield break;
     }
-    // Animates the fall of blocks to create holes
     private IEnumerator DropHoleCoroutine()
     {
         yield return new WaitForSeconds(3.5f);
@@ -106,17 +102,6 @@ public class Platform : MonoBehaviour
 
             StartCoroutine("DropHoleCoroutine");
         }
-        else if (rand > 0.05 && rand < 0.07 && GameController.premptiveDayTime && settings.GetStarvationSet())
-        {
-            // Spawn apple on platform
-            m_isHole = false;
-            GetComponent<MeshRenderer>().enabled = true;
-            m_isRock = false;
-            m_collider.isTrigger = false;
-            m_material.color = GrassColors[Random.Range(0, GrassColors.Length - 1)];
-            transform.localScale = new Vector3(5, 5, 5);
-            SpawnApple();
-        }
         else if (rand > 0.05 && rand < 0.07 && !GameController.premptiveDayTime)
         {
             // Spawn flower on block
@@ -128,7 +113,7 @@ public class Platform : MonoBehaviour
             transform.localScale = new Vector3(5, 5, 5);
             SpawnLightFlower();
         }
-        else if (rand > 0.1 && rand < 0.2)
+        else if (rand > 0.1 && rand < 0.18)
         {
             // Spawn grass on block
             m_isHole = false;
@@ -137,7 +122,12 @@ public class Platform : MonoBehaviour
             m_collider.isTrigger = false;
             m_material.color = GrassColors[Random.Range(0, GrassColors.Length - 1)];
             transform.localScale = new Vector3(5, 5, 5);
-            //SpawnGrass();
+            SpawnTree();
+            if (rand > 0.15 && rand < 0.18 && GameController.premptiveDayTime && settings.GetStarvationSet())
+            {
+                // Spawn apple on platform
+                SpawnApple();
+            }
         }
         else
         {
@@ -193,6 +183,12 @@ public class Platform : MonoBehaviour
         m_grass.transform.parent = transform;
         m_hasGrass = true;
     }
+    public void SpawnTree()
+    {
+        GameObject m_tree = Instantiate(Tree, new Vector3(transform.position.x, transform.position.y + 2, transform.position.z), Quaternion.identity);
+        m_tree.transform.parent = transform;
+        m_hasTree = true;
+    }
 
     public bool GetHitWorm()
     {
@@ -214,6 +210,7 @@ public class Platform : MonoBehaviour
     private bool m_dropedWorm = false;
     private bool m_hasApple = false;
     private bool m_hasGrass = false;
+    private bool m_hasTree = false;
     private GameObject m_apple;
     private GameObject m_flower;
     private LevelSettings settings;
